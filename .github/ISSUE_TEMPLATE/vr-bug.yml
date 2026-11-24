@@ -1,0 +1,117 @@
+name: VR problem
+description: Something wrong or missing when playing in VR (--vr / the "TotK VR" shortcut).
+title: "[VR] "
+labels: ["vr"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing VR! This form is only for VR. For problems that also happen in the normal (flat) game, please
+        report them to the main project instead.
+
+        The more exact the report, the faster it gets fixed. Most VR problems only happen in one place or one situation,
+        so **where** and **what you were doing** matter most.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens?
+      description: What you see in the headset, and what you expected instead. If one eye looks different from the other, say which.
+      placeholder: "During the cutscene after talking to ..., the building on the right is doubled and I can't focus on it."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen
+      description: Where you are in the game and what you do, step by step. Does it happen every time?
+      placeholder: |
+        1. Load my save (attached), standing next to ...
+        2. Hold D-pad right, choose ..., press ...
+        3. The HUD flashes ...
+        Happens: every time / sometimes / once
+    validations:
+      required: true
+  - type: dropdown
+    id: when
+    attributes:
+      label: When does it show?
+      multiple: true
+      options:
+        - Normal play / walking around
+        - Moving my head
+        - Turning the camera with the stick
+        - Cutscene or talking to someone
+        - Menu, map, inventory, quick-select
+        - Aiming (bow, throw, camera, scope, Ultrahand, Recall)
+        - Loading / title / teleporting
+        - All the time
+        - Other (describe above)
+  - type: input
+    id: headset
+    attributes:
+      label: Headset
+      placeholder: "Steam Frame / Valve Index / Quest 3 via Steam Link / ..."
+    validations:
+      required: true
+  - type: input
+    id: steamvr
+    attributes:
+      label: SteamVR version and branch
+      description: SteamVR > Settings > About, or Steam > Library > SteamVR > Properties > Betas.
+      placeholder: "2.19.4 (beta)"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - Linux
+        - SteamOS / Steam Deck
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU and driver
+      placeholder: "RX 7900 XT, Mesa 26.2 / RTX 4080, 590.xx"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Recomp version
+      description: The version the setup shows, or the first lines of the log.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log
+      description: |
+        Attach `logs/totk.log` from the install folder (drag the file into this box), from a run where the problem happened.
+        Please don't trim it: the VR lines are spread over the whole file.
+    validations:
+      required: true
+  - type: textarea
+    id: save
+    attributes:
+      label: Save (if the problem happens in a particular place)
+      description: |
+        A save right before the problem lets us see exactly what you saw. Zip the save folder and drag the zip in here:
+        `profile/save/<number>/slot_XX` in the install folder (the slot you saved to; the newest one if unsure).
+        Saves are small (about 2-3 MB) and only contain your game progress.
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshot or video (optional)
+      description: A short clip or a SteamVR screenshot helps a lot with visual problems.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The same thing does not happen in the normal (flat) game.
+          required: true
+        - label: SteamVR is the active OpenXR runtime, and the headset and SteamVR are on the same branch (both stable or both beta).
